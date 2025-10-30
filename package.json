@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "wrangler pages dev .vercel/output/static",
+    "deploy": "wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
     "framer-motion": "^12.23.24",
