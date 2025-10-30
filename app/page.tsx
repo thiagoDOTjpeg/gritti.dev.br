@@ -75,7 +75,7 @@ export default function Home() {
             <h1
               className="text-5xl sm:text-6xl font-bold mb-3"
               style={{
-                fontFamily: "var(--font-press-start)",
+                fontFamily: "var(--font-pixel)",
                 color: "var(--accent-2)",
                 textShadow: `
                    3px 0px 0px #000000,

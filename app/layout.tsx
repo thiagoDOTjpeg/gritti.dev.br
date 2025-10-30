@@ -1,34 +1,74 @@
 import type { Metadata } from "next";
-import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 
-const pressStart = Press_Start_2P({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-press-start",
-});
+import Script from "next/script";
+
+const siteUrl = "https://gritti.dev.br";
+const siteName = "Thiago Gritti — Portfólio e Currículo";
+const siteDescription =
+  "Site pessoal de Thiago Gritti: divulgação de carreira, portfólio e currículo. Projetos fullstack (Java/Spring, React/Next.js), experiência profissional, contato e links.";
 
 export const metadata: Metadata = {
-  title: "Thiago Gritti | Desenvolvedor Fullstack",
-  description:
-    "Portfólio de Thiago Gritti - Desenvolvedor Fullstack Junior com ênfase em Backend",
-  keywords: [
-    "desenvolvedor",
-    "fullstack",
-    "backend",
-    "react",
-    "next.js",
-    "node.js",
-  ],
-  authors: [{ name: "Thiago Gritti" }],
-  openGraph: {
-    title: "Thiago Gritti | Desenvolvedor Fullstack",
-    description: "Portfólio de Thiago Gritti - Desenvolvedor Fullstack Junior",
-    url: "https://gritti.dev.br",
-    siteName: "Thiago Gritti Portfolio",
-    locale: "pt_BR",
-    type: "website",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteName,
+    template: "%s • Thiago Gritti",
   },
+  description: siteDescription,
+  keywords: [
+    "Thiago Gritti",
+    "portfólio",
+    "currículo",
+    "desenvolvedor backend",
+    "Java",
+    "Spring Boot",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "desenvolvedor fullstack",
+    "carreira em tecnologia",
+  ],
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: siteUrl,
+    siteName,
+    title: siteName,
+    description: siteDescription,
+    images: [
+      {
+        url: "/icon1.png", // adicione este arquivo em /public
+        width: 1200,
+        height: 630,
+        alt: "Thiago Gritti — Portfólio e Currículo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteName,
+    description: siteDescription,
+    images: ["/icon1.png"],
+    creator: "@seu_usuario", // opcional
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  category: "technology",
+  applicationName: "Portfólio Thiago Gritti",
+  authors: [{ name: "Thiago Gritti", url: siteUrl }],
+  creator: "Thiago Gritti",
+  publisher: "Thiago Gritti",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -37,8 +77,54 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={pressStart.variable + "scroll-smooth"}>
-      <body>{children}</body>
+    <html lang="pt-BR" className="scroll-smooth">
+      <body>
+        {children}
+
+        {/* JSON-LD: Person */}
+        <Script
+          id="ld-person"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Thiago Gritti",
+            url: siteUrl,
+            jobTitle: "Desenvolvedor Fullstack (Backend)",
+            sameAs: [
+              "https://github.com/thiagoDOTjpeg",
+              "https://www.linkedin.com/in/thiago-gritti",
+            ],
+            worksFor: {
+              "@type": "Organization",
+              name: "CodeHaus",
+            },
+          })}
+        </Script>
+
+        {/* JSON-LD: WebSite */}
+        <Script
+          id="ld-website"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: siteName,
+            url: siteUrl,
+            inLanguage: "pt-BR",
+            about:
+              "Portfólio e currículo de Thiago Gritti. Projetos, experiência e contato.",
+            publisher: {
+              "@type": "Person",
+              name: "Thiago Gritti",
+            },
+          })}
+        </Script>
+      </body>
     </html>
   );
 }

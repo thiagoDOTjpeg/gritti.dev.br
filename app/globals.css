@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -9,6 +9,7 @@
   --accent: #06b6d4;
   --accent-2: #ffd700;
   --glass: rgba(255, 255, 255, 0.03);
+  --font-pixel: "Pixelify Sans", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +23,7 @@
 }
 
 .pixel-font {
-  font-family: var(--font-press-start), cursive;
+  font-family: var(--font-pixel), cursive;
   image-rendering: pixelated;
 }
 
