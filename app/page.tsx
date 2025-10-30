@@ -70,24 +70,24 @@ export default function Home() {
   return (
     <main className="bg-gray-900">
       <ParallaxSection layers={parallaxLayers}>
-        <div className="flex items-center justify-center h-full">
+        <div className="flex items-center justify-center min-h-[70vh]">
           <div className="text-center text-white px-4">
             <h1
               className="text-5xl sm:text-6xl font-bold mb-3"
               style={{
                 fontFamily: "var(--font-press-start)",
-                color: "#FFD700",
+                color: "var(--accent-2)",
                 textShadow: `
-                  3px 0px 0px #000000,
-                  -3px 0px 0px #000000,
-                  0px 3px 0px #000000,
-                  0px -3px 0px #000000,
-                  3px 3px 0px #000000,
-                  -3px -3px 0px #000000,
-                  3px -3px 0px #000000,
-                  -3px 3px 0px #000000,
-                  6px 6px 0px rgba(0,0,0,0.5)
-                `,
+                   3px 0px 0px #000000,
+                   -3px 0px 0px #000000,
+                   0px 3px 0px #000000,
+                   0px -3px 0px #000000,
+                   3px 3px 0px #000000,
+                   -3px -3px 0px #000000,
+                   3px -3px 0px #000000,
+                   -3px 3px 0px #000000,
+                   6px 6px 0px rgba(0,0,0,0.5)
+                 `,
               }}
             >
               THIAGO GRITTI
@@ -95,7 +95,7 @@ export default function Home() {
             <p
               className="text-lg sm:text-xl mb-10"
               style={{
-                color: "#E8D5B7",
+                color: "var(--muted)",
                 textShadow: "2px 2px 4px rgba(0,0,0,0.9)",
               }}
             >
@@ -148,7 +148,7 @@ export default function Home() {
             </div>
 
             <a
-              href="#sobre"
+              href="#projetos"
               role="button"
               aria-label="Ir para a seção Sobre Mim"
               className="inline-block px-10 py-4 bg-[#1e40af] hover:bg-[#2563eb] rounded-none transition-all border-2 border-[#1e3a8a] hover:border-[#1e40af] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900"
@@ -159,7 +159,7 @@ export default function Home() {
         </div>
       </ParallaxSection>
 
-      <section className="bg-gray-900 text-white py-20 px-8">
+      <section className="bg-gray-900 text-white py-12 px-8">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-8">Sobre Mim</h2>
 
@@ -246,7 +246,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-linear-to-b from-gray-900 to-gray-800 text-white py-20 px-8">
+      <section
+        id="projetos"
+        className="bg-linear-to-b from-gray-900 to-gray-800 text-white py-12 px-8"
+      >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-4 text-center">
             Projetos em Destaque
@@ -324,24 +327,35 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-linear-to-r from-blue-900 to-purple-900 py-16 px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-5xl font-bold text-white mb-2">58%</div>
-              <div className="text-gray-300">Otimização de Performance</div>
+      <section className="bg-linear-to-r from-blue-900 to-purple-900 py-12 px-8">
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="bg-gray-800/50 p-8 border-2 border-gray-700 rounded-none">
+            <div className="text-5xl font-bold text-green-400 mb-2">5ms</div>
+            <div className="text-gray-300 font-semibold">
+              Tempo de Resposta da API
             </div>
-            <div>
-              <div className="text-5xl font-bold text-white mb-2">100%</div>
-              <div className="text-gray-300">Compliance DETRAN</div>
+            <div className="text-sm text-gray-400 mt-2">
+              Otimizado de 12ms para 5ms
             </div>
-            <div>
-              <div className="text-5xl font-bold text-white mb-2">2+</div>
-              <div className="text-gray-300">Anos de Experiência</div>
+          </div>
+
+          <div className="bg-gray-800/50 p-8 border-2 border-gray-700 rounded-none">
+            <div className="text-5xl font-bold text-blue-400 mb-2">E2E</div>
+            <div className="text-gray-300 font-semibold">
+              Desenvolvimento Full-Stack
             </div>
-            <div>
-              <div className="text-5xl font-bold text-white mb-2">C1</div>
-              <div className="text-gray-300">Inglês Avançado</div>
+            <div className="text-sm text-gray-400 mt-2">
+              Front, Back e Deploy
+            </div>
+          </div>
+
+          <div className="bg-gray-800/50 p-8 border-2 border-gray-700 rounded-none">
+            <div className="text-5xl font-bold text-purple-400 mb-2">DDD</div>
+            <div className="text-gray-300 font-semibold">
+              Clean Architecture
+            </div>
+            <div className="text-sm text-gray-400 mt-2">
+              Design de Software Robusto
             </div>
           </div>
         </div>

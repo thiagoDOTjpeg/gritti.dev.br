@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={pressStart.variable}>
+    <html lang="pt-BR" className={pressStart.variable + "scroll-smooth"}>
       <body>{children}</body>
     </html>
   );
