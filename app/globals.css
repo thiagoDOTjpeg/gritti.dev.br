@@ -17,6 +17,57 @@
   }
 }
 
+@keyframes cloudTrack {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  } /* move metade da largura do track (200%) */
+}
+
+/* Bobbing vertical suave */
+@keyframes cloudBob {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(var(--bob-amplitude, 6px) * -1));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Track com 2 slides idênticos (loop infinito) */
+.cloud-bob {
+  animation: cloudBob var(--bob-duration, 8s) ease-in-out infinite;
+  will-change: transform;
+}
+.cloud-track {
+  width: 200%;
+  height: 100%;
+  display: flex;
+  animation: cloudTrack var(--drift-duration, 70s) linear infinite;
+  will-change: transform;
+}
+.cloud-slide {
+  width: 50%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: bottom left;
+  image-rendering: pixelated;
+}
+
+/* Respeita preferências do usuário */
+@media (prefers-reduced-motion: reduce) {
+  .cloud-bob,
+  .cloud-track {
+    animation: none;
+  }
+}
+
 :focus {
   outline: 2px solid var(--accent-2);
   outline-offset: 2px;

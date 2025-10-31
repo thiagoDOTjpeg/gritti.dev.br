@@ -3,10 +3,10 @@ import ParallaxSection from "./components/ParallaxSection";
 
 export default function Home() {
   const parallaxLayers = [
-    { image: "/1.png", speed: 0.2, zIndex: 1 },
-    { image: "/2.png", speed: 0.4, zIndex: 2 },
-    { image: "/3.png", speed: 0.6, zIndex: 3 },
     { image: "/4.png", speed: 0.8, zIndex: 4 },
+    { image: "/3.png", speed: 0.6, zIndex: 3 },
+    { image: "/2.png", speed: 0.4, zIndex: 2 },
+    { image: "/1.png", speed: 0.2, zIndex: 1 },
   ];
 
   const projects = [
@@ -36,7 +36,7 @@ export default function Home() {
     {
       title: "API Optimization - CodeHaus",
       description:
-        "Otimização de performance de API que reduziu tempo de resposta de 12ms para 5ms (58% mais rápido).",
+        "Otimização de performance de API que reduziu o tempo de resposta de ~3s para ~200ms.",
       tech: ["Node.js", "Express", "Redis", "MySQL", "MongoDB"],
       features: [
         "Refatoração do fluxo de dados",
@@ -46,7 +46,7 @@ export default function Home() {
       ],
       github: null,
       demo: null,
-      highlight: "Experiência Profissional",
+      highlight: "Experiência Profissional", // Mantido como experiência
       color: "from-blue-500 to-cyan-600",
     },
     {
@@ -69,7 +69,14 @@ export default function Home() {
 
   return (
     <main className="bg-gray-900">
-      <ParallaxSection layers={parallaxLayers}>
+      <ParallaxSection
+        layers={parallaxLayers}
+        freezeLast
+        cloudDrift
+        driftDurationSec={80}
+        bobDurationSec={8}
+        bobAmplitudePx={6}
+      >
         <div className="flex items-center justify-center min-h-[70vh]">
           <div className="text-center text-white px-4">
             <h1
@@ -99,7 +106,9 @@ export default function Home() {
                 textShadow: "2px 2px 4px rgba(0,0,0,0.9)",
               }}
             >
-              Desenvolvedor Fullstack Junior | Backend
+              {/* Subtítulo atualizado */}
+              Desenvolvedor Full-Stack focado em performance e arquitetura de
+              software
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
@@ -133,8 +142,9 @@ export default function Home() {
                 <span className="font-semibold">LinkedIn</span>
               </a>
 
+              {/* Link de Email Atualizado */}
               <a
-                href="mailto:thiago@gritti.dev.br"
+                href="mailto:thiago.gritti12@gmail.com"
                 aria-label="Enviar email para Thiago Gritti"
                 className="group relative flex items-center justify-center gap-2 px-6 py-3 bg-[#2d6a4f] hover:bg-[#40916c] rounded-none transition-all border-2 border-[#1b4332] hover:border-[#2d6a4f] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900"
               >
@@ -165,12 +175,13 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div>
+              {/* Texto "Sobre Mim" atualizado */}
               <p className="text-lg text-gray-300 mb-6">
-                Desenvolvedor Fullstack Junior focado em backend, atualmente
-                trabalhando na{" "}
-                <span className="text-blue-400 font-semibold">CodeHaus</span>{" "}
-                onde otimizei performance de APIs em 58% e redesenhei dashboards
-                completos.
+                Desenvolvedor Full-Stack com expertise em otimização de
+                performance e arquitetura de software. Especializado em
+                TypeScript/Node.js e Next.js, com experiência comprovada em
+                refatoração de sistemas críticos aplicando Clean Architecture,
+                reduzindo tempo de resposta em mais de 50%.
               </p>
               <p className="text-lg text-gray-300 mb-6">
                 Cursando Análise e Desenvolvimento de Sistemas na Univali, com
@@ -189,16 +200,21 @@ export default function Home() {
                   Backend
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {["Java", "Spring Boot", "Node.js", "Nest.js", "Express"].map(
-                    (skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1 bg-gray-800 border border-gray-700 text-sm"
-                      >
-                        {skill}
-                      </span>
-                    )
-                  )}
+                  {[
+                    "Node.js",
+                    "Nest.js",
+                    "Express.js",
+                    "Hono",
+                    "Spring Boot",
+                    "Java",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 bg-gray-800 border border-gray-700 text-sm"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
 
@@ -208,11 +224,12 @@ export default function Home() {
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "React",
+                    "React.js",
                     "Next.js",
                     "TypeScript",
-                    "Tailwind",
                     "Material-UI",
+                    "Zustand",
+                    "React Hook Form",
                   ].map((skill) => (
                     <span
                       key={skill}
@@ -229,16 +246,49 @@ export default function Home() {
                   DevOps & Cloud
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {["AWS", "Docker", "Kubernetes", "PostgreSQL", "Redis"].map(
-                    (skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1 bg-gray-800 border border-gray-700 text-sm"
-                      >
-                        {skill}
-                      </span>
-                    )
-                  )}
+                  {[
+                    "AWS",
+                    "GCP",
+                    "Docker",
+                    "Kubernetes",
+                    "Jenkins",
+                    "Cloudflare Workers",
+                    "PostgreSQL",
+                    "MySQL",
+                    "MongoDB",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 bg-gray-800 border border-gray-700 text-sm"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-3 text-yellow-400">
+                  Ferramentas & Metodologias
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Git",
+                    "Swagger/OpenAPI",
+                    "Jest",
+                    "Bun Test",
+                    "Zod",
+                    "WebSockets",
+                    "JWT",
+                    "CI/CD",
+                    "Testes Unitários e de Integração",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 bg-gray-800 border border-gray-700 text-sm"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -246,17 +296,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Seção de Projetos e CTA permanecem iguais */}
       <section
         id="projetos"
-        className="bg-linear-to-b from-gray-900 to-gray-800 text-white py-12 px-8"
+        className="bg-gradient-to-b from-gray-900 to-gray-800 text-white py-12 px-8"
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-4 text-center">
             Projetos em Destaque
           </h2>
           <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
-            Alguns dos projetos que desenvolvi, desde sistemas completos até
-            otimizações de performance em produção.
+            Portfólio de projetos e entregas profissionais: refatoração de
+            sistemas críticos, otimizações de performance e soluções serverless.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -267,7 +318,8 @@ export default function Home() {
               >
                 {project.highlight && (
                   <div
-                    className={`absolute -top-3 -right-3 bg-linear-to-r ${project.color} px-4 py-1 text-xs font-bold shadow-lg`}
+                    className={`absolute -top-3 -right-3 bg-gradient-to-r ${project.color} px-4 py-1 text-xs font-bold shadow-lg`}
+                    aria-label={`Badge: ${project.highlight}`}
                   >
                     {project.highlight}
                   </div>
@@ -327,35 +379,41 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-linear-to-r from-blue-900 to-purple-900 py-12 px-8">
+      <section className="bg-gradient-to-r from-blue-900 to-purple-900 py-12 px-8">
         <div className="grid md:grid-cols-3 gap-8 text-center">
           <div className="bg-gray-800/50 p-8 border-2 border-gray-700 rounded-none">
-            <div className="text-5xl font-bold text-green-400 mb-2">5ms</div>
-            <div className="text-gray-300 font-semibold">
-              Tempo de Resposta da API
+            <div className="text-3xl sm:text-4xl font-bold text-green-400 mb-2">
+              15s → 5s
             </div>
-            <div className="text-sm text-gray-400 mt-2">
-              Otimizado de 12ms para 5ms
+            <div className="text-gray-300 font-semibold">
+              Análise de Crédito
+            </div>
+            <div className="text-sm text-gray-200 mt-2">
+              −66% tempo de resposta
             </div>
           </div>
 
           <div className="bg-gray-800/50 p-8 border-2 border-gray-700 rounded-none">
-            <div className="text-5xl font-bold text-blue-400 mb-2">E2E</div>
-            <div className="text-gray-300 font-semibold">
-              Desenvolvimento Full-Stack
+            <div className="text-3xl sm:text-4xl font-bold text-blue-400 mb-2">
+              3s → 200ms
             </div>
-            <div className="text-sm text-gray-400 mt-2">
-              Front, Back e Deploy
+            <div className="text-gray-300 font-semibold">
+              Requisições críticas
+            </div>
+            <div className="text-sm text-gray-200 mt-2">
+              Refatoração e eliminação de redundâncias
             </div>
           </div>
 
           <div className="bg-gray-800/50 p-8 border-2 border-gray-700 rounded-none">
-            <div className="text-5xl font-bold text-purple-400 mb-2">DDD</div>
-            <div className="text-gray-300 font-semibold">
-              Clean Architecture
+            <div className="text-3xl sm:text-4xl font-bold text-purple-300 mb-2">
+              Serverless
             </div>
-            <div className="text-sm text-gray-400 mt-2">
-              Design de Software Robusto
+            <div className="text-gray-300 font-semibold">
+              Edge com CF Workers (Hono)
+            </div>
+            <div className="text-sm text-gray-200 mt-2">
+              Swagger + Zod • JWT • WebSockets
             </div>
           </div>
         </div>

@@ -4,15 +4,16 @@ import "./globals.css";
 import Script from "next/script";
 
 const siteUrl = "https://gritti.dev.br";
-const siteName = "Thiago Gritti — Portfólio e Currículo";
+const siteName = "Thiago Gritti";
+// Descrição atualizada com base no novo currículo
 const siteDescription =
-  "Site pessoal de Thiago Gritti: divulgação de carreira, portfólio e currículo. Projetos fullstack (Java/Spring, React/Next.js), experiência profissional, contato e links.";
+  "Desenvolvedor Full-Stack com expertise em otimização de performance e arquitetura de software. Especializado em TypeScript/Node.js/Next.js, com experiência em Clean Architecture, CI/CD e serverless.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: siteName,
-    template: "%s • Thiago Gritti",
+    default: "Thiago Gritti | Desenvolvedor Fullstack", // Título que você queria
+    template: "%s | Thiago Gritti",
   },
   description: siteDescription,
   keywords: [
@@ -37,11 +38,11 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: siteUrl,
     siteName,
-    title: siteName,
-    description: siteDescription,
+    title: "Thiago Gritti | Desenvolvedor Fullstack",
+    description: siteDescription, // Descrição atualizada
     images: [
       {
-        url: "/icon1.png", // adicione este arquivo em /public
+        url: "/icon1.png",
         width: 1200,
         height: 630,
         alt: "Thiago Gritti — Portfólio e Currículo",
@@ -50,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteName,
-    description: siteDescription,
+    title: "Thiago Gritti | Desenvolvedor Fullstack",
+    description: siteDescription, // Descrição atualizada
     images: ["/icon1.png"],
     creator: "@seu_usuario", // opcional
   },
@@ -81,7 +82,7 @@ export default function RootLayout({
       <body>
         {children}
 
-        {/* JSON-LD: Person */}
+        {/* JSON-LD: Person (removido o campo "worksFor") */}
         <Script
           id="ld-person"
           type="application/ld+json"
@@ -97,14 +98,10 @@ export default function RootLayout({
               "https://github.com/thiagoDOTjpeg",
               "https://www.linkedin.com/in/thiago-gritti",
             ],
-            worksFor: {
-              "@type": "Organization",
-              name: "CodeHaus",
-            },
           })}
         </Script>
 
-        {/* JSON-LD: WebSite */}
+        {/* JSON-LD: WebSite (descrição "about" atualizada) */}
         <Script
           id="ld-website"
           type="application/ld+json"
@@ -116,8 +113,7 @@ export default function RootLayout({
             name: siteName,
             url: siteUrl,
             inLanguage: "pt-BR",
-            about:
-              "Portfólio e currículo de Thiago Gritti. Projetos, experiência e contato.",
+            about: siteDescription, // Descrição atualizada
             publisher: {
               "@type": "Person",
               name: "Thiago Gritti",
