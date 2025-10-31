@@ -102,7 +102,7 @@ export default function Home() {
             <p
               className="text-lg sm:text-xl mb-10"
               style={{
-                color: "var(--muted)",
+                // color: "var(--muted)",
                 textShadow: "2px 2px 4px rgba(0,0,0,0.9)",
               }}
             >
