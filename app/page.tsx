@@ -115,7 +115,7 @@ export default function Home() {
         bobDurationSec={8}
         bobAmplitudePx={6}
       >
-        <div className="flex items-center justify-center min-h-[70vh]">
+        <div className="flex items-center justify-center min-h-screen h-full overflow-y-auto pb-20 pt-20">
           <div className="text-center text-white px-4">
             <h1
               className="text-5xl sm:text-6xl font-bold mb-3 pixel-font"
