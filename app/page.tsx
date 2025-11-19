@@ -1,5 +1,6 @@
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import ParallaxSection from "./components/ParallaxSection";
+import ProjectCarousel from "./components/ProjectCarousel";
 
 export default function Home() {
   const parallaxLayers = [
@@ -11,64 +12,100 @@ export default function Home() {
 
   const projects = [
     {
+      title: "Harmonia.io",
+      description:
+        "Solução Open Source robusta para sincronização unidirecional de playlists entre serviços de streaming (YouTube -> Spotify). Desenvolvida como um Monorepo utilizando Turborepo, focada em alta performance, arquitetura distribuída e processamento assíncrono de jobs.",
+      tech: [
+        "Next.js 15",
+        "Node.js",
+        "TypeScript",
+        "BullMQ",
+        "Redis",
+        "PostgreSQL",
+        "Prisma",
+        "Zustand",
+        "Shadcn UI",
+        "Docker",
+        "Clean Architecture",
+      ],
+      features: [
+        "Arquitetura Hexagonal/Clean Architecture com Domain-Driven Design",
+        "Sistema de filas resiliente (BullMQ + Redis) para sync de milhares de faixas",
+        "Autenticação OAuth2 segura com gestão de refresh tokens e encriptação AES",
+        "Frontend moderno com Next.js 15 (App Router), TailwindCSS e Shadcn UI",
+      ],
+      github: "https://github.com/thiagoDOTjpeg/harmonia",
+      demo: "https://harmonia.io",
+      highlight: "Open Source [Em Dev]", // Destaque atualizado
+      color: "from-indigo-500 to-cyan-400",
+    },
+    {
       title: "Financial Management System",
       description:
-        "Sistema completo de gestão financeira pessoal com controle de contas, transações, faturas e cartões de crédito.",
+        "Sistema completo de gestão financeira pessoal enterprise-grade. Permite controle granular de contas, transações, faturas recorrentes e múltiplos cartões de crédito com dashboards analíticos.",
       tech: [
-        "Java",
-        "Spring Boot",
+        "Java 17",
+        "Spring Boot 3",
         "React",
         "TypeScript",
         "PostgreSQL",
         "Docker",
+        "Spring Security",
+        "JWT",
       ],
       features: [
-        "Autenticação JWT com Spring Security",
-        "Arquitetura DDD e Clean Architecture",
-        "Dashboard interativo com Recharts",
-        "Sistema de faturas automatizado",
+        "Implementação rigorosa de SOLID e Clean Code",
+        "Segurança avançada com Spring Security e JWT Stateless",
+        "Relatórios dinâmicos e gráficos interativos com Recharts",
+        "Pipeline de CI/CD e containerização completa",
       ],
       github: "https://github.com/thiagoDOTjpeg/financial-management",
       demo: null,
-      highlight: "Projeto Destaque",
+      highlight: "Destaque Fullstack",
       color: "from-green-500 to-emerald-600",
     },
     {
       title: "API Optimization - CodeHaus",
       description:
-        "Otimização de performance de API que reduziu o tempo de resposta de ~3s para ~200ms.",
-      tech: ["Node.js", "Express", "Redis", "MySQL", "MongoDB"],
+        "Case de sucesso profissional: Refatoração e otimização de performance de uma API legada crítica, resultando em uma redução drástica no tempo de resposta (de 3s para 200ms) e custos de infraestrutura.",
+      tech: ["Node.js", "Express", "Redis", "MySQL", "MongoDB", "Bun Test"],
       features: [
-        "Refatoração do fluxo de dados",
-        "Implementação de cache com Redis",
-        "Eliminação de chamadas redundantes",
-        "Testes de integração com Bun",
+        "Estratégias agressivas de Caching com Redis (Cache-Aside)",
+        "Refatoração de queries N+1 e otimização de índices de banco",
+        "Testes de carga e integração automatizados",
+        "Arquitetura orientada a eventos para processos pesados",
       ],
       github: null,
       demo: null,
-      highlight: "Experiência Profissional", // Mantido como experiência
+      highlight: "Experiência Profissional",
       color: "from-blue-500 to-cyan-600",
     },
     {
       title: "Dashboard Redesign",
       description:
-        "Redesign completo do dashboard principal da plataforma CodeHaus para melhor usabilidade e análise de dados.",
-      tech: ["Next.js", "TypeScript", "Material-UI", "Zustand"],
+        "Modernização completa da interface administrativa da CodeHaus. Foco total em UX/UI, acessibilidade e performance de renderização para lidar com grandes volumes de dados em tempo real.",
+      tech: [
+        "Next.js",
+        "TypeScript",
+        "Material-UI",
+        "Zustand",
+        "React Hook Form",
+      ],
       features: [
-        "UI responsiva e intuitiva",
-        "Gerenciamento de estado global",
-        "Validação de formulários com Yup",
-        "WebSocket para atualizações real-time",
+        "Gerenciamento de estado atômico e performático com Zustand",
+        "Validação complexa de formulários com Zod/Yup",
+        "WebSockets para atualizações de dados em tempo real",
+        "Design System customizado e responsivo",
       ],
       github: null,
       demo: null,
-      highlight: null,
+      highlight: "Frontend Avançado",
       color: "from-purple-500 to-pink-600",
     },
   ];
 
   return (
-    <main className="bg-gray-900">
+    <main className="bg-gray-900 min-h-screen">
       <ParallaxSection
         layers={parallaxLayers}
         freezeLast
@@ -80,9 +117,8 @@ export default function Home() {
         <div className="flex items-center justify-center min-h-[70vh]">
           <div className="text-center text-white px-4">
             <h1
-              className="text-5xl sm:text-6xl font-bold mb-3"
+              className="text-5xl sm:text-6xl font-bold mb-3 pixel-font"
               style={{
-                fontFamily: "var(--font-pixel)",
                 color: "var(--accent-2)",
                 textShadow: `
                    3px 0px 0px #000000,
@@ -100,320 +136,183 @@ export default function Home() {
               THIAGO GRITTI
             </h1>
             <p
-              className="text-lg sm:text-xl mb-10"
+              className="text-lg sm:text-xl mb-10 font-medium tracking-wide"
               style={{
-                // color: "var(--muted)",
                 textShadow: "2px 2px 4px rgba(0,0,0,0.9)",
               }}
             >
-              {/* Subtítulo atualizado */}
-              Desenvolvedor Full-Stack focado em performance e arquitetura de
-              software
+              Desenvolvedor Full-Stack & Arquiteto de Software
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <a
                 href="https://github.com/thiagoDOTjpeg"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Abrir perfil do GitHub de Thiago Gritti"
-                className="group relative flex items-center justify-center gap-2 px-6 py-3 bg-[#1a1a1a] hover:bg-[#2d2d2d] rounded-none transition-all border-2 border-[#333] hover:border-[#555] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="group relative flex items-center justify-center gap-2 px-8 py-3 bg-[#1a1a1a] hover:bg-[#2d2d2d] border-2 border-[#333] hover:border-[#555] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
               >
                 <FiGithub
                   size={20}
-                  aria-hidden="true"
                   className="group-hover:scale-110 transition-transform"
                 />
-                <span className="font-semibold">GitHub</span>
+                <span className="font-bold tracking-wider">GITHUB</span>
               </a>
 
               <a
                 href="https://linkedin.com/in/thiago-gritti"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Abrir perfil do LinkedIn de Thiago Gritti"
-                className="group relative flex items-center justify-center gap-2 px-6 py-3 bg-[#0077B5] hover:bg-[#0088CC] rounded-none transition-all border-2 border-[#005582] hover:border-[#006699] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="group relative flex items-center justify-center gap-2 px-8 py-3 bg-[#0077B5] hover:bg-[#006396] border-2 border-[#005582] hover:border-[#004b73] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
               >
                 <FiLinkedin
                   size={20}
-                  aria-hidden="true"
                   className="group-hover:scale-110 transition-transform"
                 />
-                <span className="font-semibold">LinkedIn</span>
+                <span className="font-bold tracking-wider">LINKEDIN</span>
               </a>
 
-              {/* Link de Email Atualizado */}
               <a
                 href="mailto:thiago.gritti12@gmail.com"
-                aria-label="Enviar email para Thiago Gritti"
-                className="group relative flex items-center justify-center gap-2 px-6 py-3 bg-[#2d6a4f] hover:bg-[#40916c] rounded-none transition-all border-2 border-[#1b4332] hover:border-[#2d6a4f] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="group relative flex items-center justify-center gap-2 px-8 py-3 bg-[#2d6a4f] hover:bg-[#1b4332] border-2 border-[#1b4332] hover:border-[#0d2b1d] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
               >
                 <FiMail
                   size={20}
-                  aria-hidden="true"
                   className="group-hover:scale-110 transition-transform"
                 />
-                <span className="font-semibold">Email</span>
+                <span className="font-bold tracking-wider">EMAIL</span>
               </a>
             </div>
 
             <a
               href="#projetos"
-              role="button"
-              aria-label="Ir para a seção Sobre Mim"
-              className="inline-block px-10 py-4 bg-[#1e40af] hover:bg-[#2563eb] rounded-none transition-all border-2 border-[#1e3a8a] hover:border-[#1e40af] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+              className="inline-block px-12 py-4 bg-[#1e40af] hover:bg-[#1e3a8a] border-2 border-[#1e3a8a] hover:border-[#172554] shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] transition-all font-bold text-lg tracking-widest"
             >
-              Ver Projetos
+              VER PROJETOS
             </a>
           </div>
         </div>
       </ParallaxSection>
 
-      <section className="bg-gray-900 text-white py-12 px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-8">Sobre Mim</h2>
+      <section className="bg-gray-900 text-white py-16 px-6 md:px-12 border-t border-gray-800">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-bold mb-10 border-l-8 border-blue-500 pl-6">
+            Sobre Mim
+          </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              {/* Texto "Sobre Mim" atualizado */}
-              <p className="text-lg text-gray-300 mb-6">
-                Desenvolvedor Full-Stack com expertise em otimização de
-                performance e arquitetura de software. Especializado em
-                TypeScript/Node.js e Next.js, com experiência comprovada em
-                refatoração de sistemas críticos aplicando Clean Architecture,
-                reduzindo tempo de resposta em mais de 50%.
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-gray-300 text-lg leading-relaxed space-y-6">
+              <p>
+                Sou um <strong>Desenvolvedor Full-Stack</strong> apaixonado por
+                construir sistemas complexos e escaláveis. Minha especialidade é
+                transformar requisitos desafiadores em código limpo,
+                performático e manutenível.
               </p>
-              <p className="text-lg text-gray-300 mb-6">
-                Cursando Análise e Desenvolvimento de Sistemas na Univali, com
-                experiência sólida em Java/Spring Boot e stack MERN (React,
-                Node.js) usando TypeScript.
+              <p>
+                Com forte base em{" "}
+                <strong>TypeScript, Node.js e o ecossistema React</strong>,
+                tenho experiência prática em arquiteturas modernas (Clean
+                Architecture, Microsserviços, Serverless) e em otimizar
+                aplicações para alta carga.
               </p>
-              <p className="text-lg text-gray-300">
-                Apaixonado por arquitetura limpa, DDD e criar soluções
-                escaláveis que resolvem problemas reais.
+              <p>
+                Atualmente focado em aprimorar soluções de infraestrutura e
+                DevOps, garantindo que o código que escrevo não apenas funcione,
+                mas escale com eficiência.
               </p>
             </div>
 
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-blue-400">
-                  Backend
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="bg-gray-800 p-5 border-l-4 border-blue-400 shadow-lg">
+                <h3 className="font-bold text-blue-400 mb-2">
+                  Backend & Arquitetura
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Node.js",
-                    "Nest.js",
-                    "Express.js",
-                    "Hono",
-                    "Spring Boot",
-                    "Java",
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-gray-800 border border-gray-700 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-sm text-gray-400">
+                  Node.js, NestJS, Clean Arch, DDD, BullMQ, Redis, PostgreSQL,
+                  Java/Spring.
+                </p>
               </div>
-
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-green-400">
-                  Frontend
+              <div className="bg-gray-800 p-5 border-l-4 border-green-400 shadow-lg">
+                <h3 className="font-bold text-green-400 mb-2">
+                  Frontend Moderno
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "React.js",
-                    "Next.js",
-                    "TypeScript",
-                    "Material-UI",
-                    "Zustand",
-                    "React Hook Form",
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-gray-800 border border-gray-700 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-sm text-gray-400">
+                  Next.js 15, React, TypeScript, Tailwind, Shadcn UI, Zustand.
+                </p>
               </div>
-
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-purple-400">
+              <div className="bg-gray-800 p-5 border-l-4 border-purple-400 shadow-lg">
+                <h3 className="font-bold text-purple-400 mb-2">
                   DevOps & Cloud
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "AWS",
-                    "GCP",
-                    "Docker",
-                    "Kubernetes",
-                    "Jenkins",
-                    "Cloudflare Workers",
-                    "PostgreSQL",
-                    "MySQL",
-                    "MongoDB",
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-gray-800 border border-gray-700 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-sm text-gray-400">
+                  Docker, AWS, CI/CD Pipelines, Serverless, Nginx.
+                </p>
               </div>
-              <div>
-                <h3 className="text-xl font-bold mb-3 text-yellow-400">
-                  Ferramentas & Metodologias
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Git",
-                    "Swagger/OpenAPI",
-                    "Jest",
-                    "Bun Test",
-                    "Zod",
-                    "WebSockets",
-                    "JWT",
-                    "CI/CD",
-                    "Testes Unitários e de Integração",
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-gray-800 border border-gray-700 text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+              <div className="bg-gray-800 p-5 border-l-4 border-yellow-400 shadow-lg">
+                <h3 className="font-bold text-yellow-400 mb-2">Qualidade</h3>
+                <p className="text-sm text-gray-400">
+                  Jest, Bun Test, TDD, Zod, Swagger/OpenAPI.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Seção de Projetos e CTA permanecem iguais */}
       <section
         id="projetos"
-        className="bg-gradient-to-b from-gray-900 to-gray-800 text-white py-12 px-8"
+        className="bg-linear-to-b from-gray-900 to-gray-800 text-white py-20 px-4"
       >
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center">
-            Projetos em Destaque
-          </h2>
-          <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
-            Portfólio de projetos e entregas profissionais: refatoração de
-            sistemas críticos, otimizações de performance e soluções serverless.
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="group relative bg-gray-800/50 backdrop-blur-sm border-2 border-gray-700 hover:border-gray-600 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all p-6"
-              >
-                {project.highlight && (
-                  <div
-                    className={`absolute -top-3 -right-3 bg-gradient-to-r ${project.color} px-4 py-1 text-xs font-bold shadow-lg`}
-                    aria-label={`Badge: ${project.highlight}`}
-                  >
-                    {project.highlight}
-                  </div>
-                )}
-
-                <h3 className="text-xl font-bold mb-3">{project.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.slice(0, 4).map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs px-2 py-1 bg-gray-700 text-gray-300 border border-gray-600"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <ul className="text-xs text-gray-400 space-y-1 mb-4">
-                  {project.features.slice(0, 3).map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-green-500 mt-0.5">▸</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex gap-2 mt-auto">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 px-3 py-2 bg-gray-700 hover:bg-gray-600 border border-gray-600 text-sm transition-colors"
-                    >
-                      <FiGithub size={16} />
-                      Código
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 px-3 py-2 bg-blue-600 hover:bg-blue-500 text-sm transition-colors"
-                    >
-                      Demo
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 pixel-font text-yellow-400 drop-shadow-md">
+              PORTFÓLIO SELECIONADO
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              Uma coleção de projetos que demonstram minha capacidade de
+              resolver problemas complexos, desde a arquitetura de backend até a
+              experiência do usuário final.
+            </p>
           </div>
+
+          <ProjectCarousel projects={projects} />
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-blue-900 to-purple-900 py-12 px-8">
-        <div className="grid md:grid-cols-3 gap-8 text-center">
-          <div className="bg-gray-800/50 p-8 border-2 border-gray-700 rounded-none">
-            <div className="text-3xl sm:text-4xl font-bold text-green-400 mb-2">
-              15s → 5s
+      <section className="bg-linear-to-r from-blue-950 to-indigo-950 py-16 px-8 border-t border-gray-700">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+          <div className="bg-gray-900/40 p-8 backdrop-blur-sm border border-gray-700 hover:border-blue-500 transition-colors group">
+            <div className="text-4xl md:text-5xl font-bold text-green-400 mb-3 group-hover:scale-110 transition-transform">
+              -66%
             </div>
-            <div className="text-gray-300 font-semibold">
-              Análise de Crédito
+            <div className="text-gray-200 font-bold text-lg uppercase tracking-wider">
+              Latência
             </div>
-            <div className="text-sm text-gray-200 mt-2">
-              −66% tempo de resposta
-            </div>
-          </div>
-
-          <div className="bg-gray-800/50 p-8 border-2 border-gray-700 rounded-none">
-            <div className="text-3xl sm:text-4xl font-bold text-blue-400 mb-2">
-              3s → 200ms
-            </div>
-            <div className="text-gray-300 font-semibold">
-              Requisições críticas
-            </div>
-            <div className="text-sm text-gray-200 mt-2">
-              Refatoração e eliminação de redundâncias
+            <div className="text-sm text-gray-400 mt-2">
+              Otimização de análise de crédito (15s → 5s)
             </div>
           </div>
 
-          <div className="bg-gray-800/50 p-8 border-2 border-gray-700 rounded-none">
-            <div className="text-3xl sm:text-4xl font-bold text-purple-300 mb-2">
-              Serverless
+          <div className="bg-gray-900/40 p-8 backdrop-blur-sm border border-gray-700 hover:border-blue-500 transition-colors group">
+            <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-3 group-hover:scale-110 transition-transform">
+              200ms
             </div>
-            <div className="text-gray-300 font-semibold">
-              Edge com CF Workers (Hono)
+            <div className="text-gray-200 font-bold text-lg uppercase tracking-wider">
+              Response Time
             </div>
-            <div className="text-sm text-gray-200 mt-2">
-              Swagger + Zod • JWT • WebSockets
+            <div className="text-sm text-gray-400 mt-2">
+              Refatoração de endpoints críticos de alta carga
+            </div>
+          </div>
+
+          <div className="bg-gray-900/40 p-8 backdrop-blur-sm border border-gray-700 hover:border-blue-500 transition-colors group">
+            <div className="text-4xl md:text-5xl font-bold text-purple-400 mb-3 group-hover:scale-110 transition-transform">
+              Edge
+            </div>
+            <div className="text-gray-200 font-bold text-lg uppercase tracking-wider">
+              Computing
+            </div>
+            <div className="text-sm text-gray-400 mt-2">
+              Soluções Serverless com Cloudflare Workers
             </div>
           </div>
         </div>
