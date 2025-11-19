@@ -1,4 +1,5 @@
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import Footer from "./components/Footer";
 import ParallaxSection from "./components/ParallaxSection";
 import ProjectCarousel from "./components/ProjectCarousel";
 
@@ -35,8 +36,8 @@ export default function Home() {
         "Frontend moderno com Next.js 15 (App Router), TailwindCSS e Shadcn UI",
       ],
       github: "https://github.com/thiagoDOTjpeg/harmonia",
-      demo: "https://harmonia.io",
-      highlight: "Open Source [Em Dev]", // Destaque atualizado
+      demo: "https://harmonia-io-web.vercel.app/",
+      highlight: "Open Source [Em Dev]",
       color: "from-indigo-500 to-cyan-400",
     },
     {
@@ -278,45 +279,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-linear-to-r from-blue-950 to-indigo-950 py-16 px-8 border-t border-gray-700">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-          <div className="bg-gray-900/40 p-8 backdrop-blur-sm border border-gray-700 hover:border-blue-500 transition-colors group">
-            <div className="text-4xl md:text-5xl font-bold text-green-400 mb-3 group-hover:scale-110 transition-transform">
-              -66%
-            </div>
-            <div className="text-gray-200 font-bold text-lg uppercase tracking-wider">
-              Latência
-            </div>
-            <div className="text-sm text-gray-400 mt-2">
-              Otimização de análise de crédito (15s → 5s)
-            </div>
-          </div>
-
-          <div className="bg-gray-900/40 p-8 backdrop-blur-sm border border-gray-700 hover:border-blue-500 transition-colors group">
-            <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-3 group-hover:scale-110 transition-transform">
-              200ms
-            </div>
-            <div className="text-gray-200 font-bold text-lg uppercase tracking-wider">
-              Response Time
-            </div>
-            <div className="text-sm text-gray-400 mt-2">
-              Refatoração de endpoints críticos de alta carga
-            </div>
-          </div>
-
-          <div className="bg-gray-900/40 p-8 backdrop-blur-sm border border-gray-700 hover:border-blue-500 transition-colors group">
-            <div className="text-4xl md:text-5xl font-bold text-purple-400 mb-3 group-hover:scale-110 transition-transform">
-              Edge
-            </div>
-            <div className="text-gray-200 font-bold text-lg uppercase tracking-wider">
-              Computing
-            </div>
-            <div className="text-sm text-gray-400 mt-2">
-              Soluções Serverless com Cloudflare Workers
-            </div>
-          </div>
-        </div>
-      </section>
+      <Footer />
     </main>
   );
 }
