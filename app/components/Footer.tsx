@@ -50,7 +50,7 @@ export default function Footer() {
                 <FiLinkedin size={20} />
               </a>
               <a
-                href="mailto:thiago.gritti12@gmail.com"
+                href="mailto:thiago@gritti.dev.br"
                 className="p-3 bg-gray-800 hover:bg-emerald-600 hover:text-white border border-gray-700 hover:border-emerald-600 transition-all rounded-sm hover:-translate-y-1"
                 aria-label="Email"
               >

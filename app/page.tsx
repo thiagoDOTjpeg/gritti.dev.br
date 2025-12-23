@@ -1,7 +1,7 @@
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import Footer from "./components/Footer";
 import ParallaxSection from "./components/ParallaxSection";
-import ProjectCarousel from "./components/ProjectCarousel";
+import ProjectsGrid from "./components/ProjectsGrid";
 
 export default function Home() {
   const parallaxLayers = [
@@ -15,7 +15,7 @@ export default function Home() {
     {
       title: "Harmonia.io",
       description:
-        "Solução Open Source robusta para sincronização unidirecional de playlists entre serviços de streaming (YouTube -> Spotify). Desenvolvida como um Monorepo utilizando Turborepo, focada em alta performance, arquitetura distribuída e processamento assíncrono de jobs.",
+        "Ecossistema de sincronização musical de alta performance. Monorepo desenhado para lidar com concorrência massiva, migrando playlists entre serviços de streaming em background.",
       tech: [
         "Next.js 15",
         "Node.js",
@@ -23,85 +23,71 @@ export default function Home() {
         "BullMQ",
         "Redis",
         "PostgreSQL",
-        "Prisma",
-        "Zustand",
-        "Shadcn UI",
         "Docker",
         "Clean Architecture",
       ],
       features: [
-        "Arquitetura Hexagonal/Clean Architecture com Domain-Driven Design",
-        "Sistema de filas resiliente (BullMQ + Redis) para sync de milhares de faixas",
-        "Autenticação OAuth2 segura com gestão de refresh tokens e encriptação AES",
-        "Frontend moderno com Next.js 15 (App Router), TailwindCSS e Shadcn UI",
+        "Arquitetura Hexagonal com DDD e separação estrita de camadas",
+        "Processamento assíncrono resiliente com filas (BullMQ + Redis)",
+        "Autenticação OAuth2 agnóstica ao fornecedor com encriptação AES",
+        "Interface moderna e responsiva com Shadcn UI e TailwindCSS",
       ],
-      github: "https://github.com/thiagoDOTjpeg/harmonia",
-      demo: "https://harmonia-io-web.vercel.app/",
-      highlight: "Open Source [Em Dev]",
-      color: "from-indigo-500 to-cyan-400",
+      github: "https://github.com/thiagoDOTjpeg/harmonia.io",
+      demo: "https://harmonia.gritti.dev.br/",
+      highlight: "Produto Principal",
+      color: "from-indigo-500 to-blue-600",
+      image: "/screenshots/harmonia.png",
     },
     {
-      title: "Financial Management System",
+      title: "Distributed TaskFlow",
       description:
-        "Sistema completo de gestão financeira pessoal enterprise-grade. Permite controle granular de contas, transações, faturas recorrentes e múltiplos cartões de crédito com dashboards analíticos.",
+        "Sistema Kanban em tempo real baseado numa arquitetura de microsserviços. Implementa padrões avançados como API Gateway, comunicação híbrida (Síncrona/Assíncrona) e WebSockets.",
       tech: [
-        "Java 17",
-        "Spring Boot 3",
-        "React",
-        "TypeScript",
+        "NestJS (Microservices)",
+        "RabbitMQ",
+        "Socket.io",
+        "React + Vite",
         "PostgreSQL",
-        "Docker",
-        "Spring Security",
-        "JWT",
+        "Docker Compose",
+        "Turborepo",
       ],
       features: [
-        "Implementação rigorosa de SOLID e Clean Code",
-        "Segurança avançada com Spring Security e JWT Stateless",
-        "Relatórios dinâmicos e gráficos interativos com Recharts",
-        "Pipeline de CI/CD e containerização completa",
+        "Arquitetura distribuída com 4 serviços isolados (Gateway, Auth, Tasks, Notifications)",
+        "Sincronização de estado em tempo real via WebSockets para equipas",
+        "Padrão API Gateway centralizando autenticação e roteamento",
+        "Ambiente de desenvolvimento orquestrado via Docker e Monorepo",
       ],
-      github: "https://github.com/thiagoDOTjpeg/financial-management",
+      github: "https://github.com/thiagoDOTjpeg/kanban-microservice", // Certifica-te de que o repo está público
       demo: null,
-      highlight: "Destaque Fullstack",
-      color: "from-green-500 to-emerald-600",
+      highlight: "Arquitetura Avançada",
+      color: "from-purple-600 to-indigo-600",
+      image: "/screenshots/taskflow.png",
     },
     {
-      title: "API Optimization - CodeHaus",
+      title: "Fleet & Logistics Core",
       description:
-        "Case de sucesso profissional: Refatoração e otimização de performance de uma API legada crítica, resultando em uma redução drástica no tempo de resposta (de 3s para 200ms) e custos de infraestrutura.",
-      tech: ["Node.js", "Express", "Redis", "MySQL", "MongoDB", "Bun Test"],
-      features: [
-        "Estratégias agressivas de Caching com Redis (Cache-Aside)",
-        "Refatoração de queries N+1 e otimização de índices de banco",
-        "Testes de carga e integração automatizados",
-        "Arquitetura orientada a eventos para processos pesados",
-      ],
-      github: null,
-      demo: null,
-      highlight: "Experiência Profissional",
-      color: "from-blue-500 to-cyan-600",
-    },
-    {
-      title: "Dashboard Redesign",
-      description:
-        "Modernização completa da interface administrativa da CodeHaus. Foco total em UX/UI, acessibilidade e performance de renderização para lidar com grandes volumes de dados em tempo real.",
+        "Plataforma de rastreio logístico focada em interoperabilidade. Uma solução híbrida que explora a segurança do Java Spring Boot e a velocidade de I/O do Node.js.",
       tech: [
-        "Next.js",
-        "TypeScript",
-        "Material-UI",
-        "Zustand",
-        "React Hook Form",
+        "Java 21",
+        "Spring Boot 3",
+        "NestJS",
+        "RabbitMQ",
+        "PostGIS",
+        "Redis",
+        "Docker",
+        "Microservices",
       ],
       features: [
-        "Gerenciamento de estado atômico e performático com Zustand",
-        "Validação complexa de formulários com Zod/Yup",
-        "WebSockets para atualizações de dados em tempo real",
-        "Design System customizado e responsivo",
+        "Comunicação assíncrona entre serviços Java e Node.js via RabbitMQ",
+        "Serviço de Autenticação Centralizado (SSO) com Spring Security",
+        "Cálculos geoespaciais complexos com PostGIS",
+        "Documentação arquitetural baseada no modelo C4",
       ],
-      github: null,
+      github: "https://github.com/thiagoDOTjpeg/fleet-microservices",
       demo: null,
-      highlight: "Frontend Avançado",
-      color: "from-purple-500 to-pink-600",
+      highlight: "Backend Poliglota",
+      color: "from-orange-500 to-amber-600",
+      image: "/screenshots/fleet.png",
     },
   ];
 
@@ -173,7 +159,7 @@ export default function Home() {
               </a>
 
               <a
-                href="mailto:thiago.gritti12@gmail.com"
+                href="mailto:thiago@gritti.dev.br"
                 className="group relative flex items-center justify-center gap-2 px-8 py-3 bg-[#2d6a4f] hover:bg-[#1b4332] border-2 border-[#1b4332] hover:border-[#0d2b1d] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
               >
                 <FiMail
@@ -194,65 +180,173 @@ export default function Home() {
         </div>
       </ParallaxSection>
 
-      <section className="bg-gray-900 text-white py-16 px-6 md:px-12 border-t border-gray-800">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold mb-10 border-l-8 border-blue-500 pl-6">
-            Sobre Mim
-          </h2>
+      <section className="bg-[#0f172a] text-white py-20 md:py-28 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
+          {/* Cabeçalho da Seção */}
+          <div className="mb-16 text-center md:text-left">
+            <span className="text-blue-400 text-sm font-medium tracking-widest uppercase mb-3 block">
+              Conheça meu trabalho
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+              Sobre Mim
+            </h2>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-gray-300 text-lg leading-relaxed space-y-6">
-              <p>
-                Sou um <strong>Desenvolvedor Full-Stack</strong> apaixonado por
-                construir sistemas complexos e escaláveis. Minha especialidade é
-                transformar requisitos desafiadores em código limpo,
-                performático e manutenível.
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Coluna Esquerda - Texto "Sobre Mim" */}
+            <div className="space-y-6">
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Sou um{" "}
+                <span className="text-white font-semibold">
+                  Desenvolvedor Full-Stack
+                </span>{" "}
+                apaixonado por construir sistemas complexos e escaláveis. Minha
+                especialidade é transformar requisitos desafiadores em código
+                limpo, performático e manutenível.
               </p>
-              <p>
+
+              <p className="text-gray-300 text-lg leading-relaxed">
                 Com forte base em{" "}
-                <strong>TypeScript, Node.js e o ecossistema React</strong>,
-                tenho experiência prática em arquiteturas modernas (Clean
-                Architecture, Microsserviços, Serverless) e em otimizar
-                aplicações para alta carga.
+                <span className="text-white font-semibold">
+                  TypeScript, Node.js e o ecossistema React
+                </span>
+                , tenho experiência prática em arquiteturas modernas como Clean
+                Architecture, Microsserviços e Serverless — sempre focando em
+                otimizar aplicações para alta carga.
               </p>
-              <p>
-                Atualmente focado em aprimorar soluções de infraestrutura e
-                DevOps, garantindo que o código que escrevo não apenas funcione,
-                mas escale com eficiência.
+
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Atualmente focado em aprimorar soluções de{" "}
+                <span className="text-white font-semibold">
+                  infraestrutura e DevOps
+                </span>
+                , garantindo que o código que escrevo não apenas funcione, mas
+                escale com eficiência.
               </p>
+
+              {/* CTA sutil */}
+              <div className="pt-4">
+                <a
+                  href="mailto:thiago@gritti.dev.br"
+                  className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-medium transition-colors group"
+                >
+                  Vamos conversar?
+                  <svg
+                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-gray-800 p-5 border-l-4 border-blue-400 shadow-lg">
-                <h3 className="font-bold text-blue-400 mb-2">
+            {/* Coluna Direita - Habilidades */}
+            <div className="space-y-8">
+              {/* Backend & Arquitetura */}
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-blue-400" />
                   Backend & Arquitetura
                 </h3>
-                <p className="text-sm text-gray-400">
-                  Node.js, NestJS, Clean Arch, DDD, BullMQ, Redis, PostgreSQL,
-                  Java/Spring.
-                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Node.js",
+                    "NestJS",
+                    "Java",
+                    "Spring Boot",
+                    "Clean Architecture",
+                    "DDD",
+                    "BullMQ",
+                    "Redis",
+                    "PostgreSQL",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 text-sm bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-lg hover:bg-blue-500/20 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="bg-gray-800 p-5 border-l-4 border-green-400 shadow-lg">
-                <h3 className="font-bold text-green-400 mb-2">
+
+              {/* Frontend Moderno */}
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-green-400" />
                   Frontend Moderno
                 </h3>
-                <p className="text-sm text-gray-400">
-                  Next.js 15, React, TypeScript, Tailwind, Shadcn UI, Zustand.
-                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Next.js 15",
+                    "React",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "Shadcn UI",
+                    "Zustand",
+                    "Framer Motion",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 text-sm bg-green-500/10 text-green-300 border border-green-500/20 rounded-lg hover:bg-green-500/20 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="bg-gray-800 p-5 border-l-4 border-purple-400 shadow-lg">
-                <h3 className="font-bold text-purple-400 mb-2">
+
+              {/* DevOps & Cloud */}
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-purple-400" />
                   DevOps & Cloud
                 </h3>
-                <p className="text-sm text-gray-400">
-                  Docker, AWS, CI/CD Pipelines, Serverless, Nginx.
-                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Docker",
+                    "AWS",
+                    "CI/CD",
+                    "Serverless",
+                    "Nginx",
+                    "Vercel",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 text-sm bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-lg hover:bg-purple-500/20 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="bg-gray-800 p-5 border-l-4 border-yellow-400 shadow-lg">
-                <h3 className="font-bold text-yellow-400 mb-2">Qualidade</h3>
-                <p className="text-sm text-gray-400">
-                  Jest, Bun Test, TDD, Zod, Swagger/OpenAPI.
-                </p>
+
+              {/* Qualidade & Testes */}
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-400" />
+                  Qualidade & Testes
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {["Jest", "Bun Test", "TDD", "Zod", "Swagger", "OpenAPI"].map(
+                    (skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 text-sm bg-amber-500/10 text-amber-300 border border-amber-500/20 rounded-lg hover:bg-amber-500/20 transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    )
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -275,7 +369,7 @@ export default function Home() {
             </p>
           </div>
 
-          <ProjectCarousel projects={projects} />
+          <ProjectsGrid projects={projects} />
         </div>
       </section>
 
