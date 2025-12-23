@@ -57,7 +57,7 @@ export default function Home() {
         "Padrão API Gateway centralizando autenticação e roteamento",
         "Ambiente de desenvolvimento orquestrado via Docker e Monorepo",
       ],
-      github: "https://github.com/thiagoDOTjpeg/kanban-microservice", // Certifica-te de que o repo está público
+      github: "https://github.com/thiagoDOTjpeg/kanban-microservice",
       demo: null,
       highlight: "Arquitetura Avançada",
       color: "from-purple-600 to-indigo-600",
@@ -128,7 +128,7 @@ export default function Home() {
                 textShadow: "2px 2px 4px rgba(0,0,0,0.9)",
               }}
             >
-              Desenvolvedor Full-Stack & Arquiteto de Software
+              Desenvolvedor Full-Stack
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">

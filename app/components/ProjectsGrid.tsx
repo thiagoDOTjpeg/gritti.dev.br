@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 
 export interface Project {
@@ -38,7 +39,6 @@ function ProjectCard({
         ${className}
       `}
     >
-      {/* Imagem/Screenshot do Projeto */}
       <div
         className={`
           relative overflow-hidden bg-linear-to-br from-slate-800 to-slate-700
@@ -46,10 +46,12 @@ function ProjectCard({
         `}
       >
         {project.image ? (
-          <img
+          <Image
             src={project.image}
             alt={`Screenshot de ${project.title}`}
-            className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            fill
+            className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -72,32 +74,27 @@ function ProjectCard({
           </div>
         )}
 
-        {/* Overlay gradiente sutil */}
         <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-transparent to-transparent" />
 
-        {/* Efeito de hover na imagem */}
         <div className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/5 transition-colors duration-300" />
       </div>
 
-      {/* Conteúdo do Card */}
       <div className="p-5 sm:p-6">
-        {/* Título */}
         <h3
           className={`
             font-bold text-white mb-2 
-            group-hover:text-blue-400 transition-colors duration-300
+            group-hover:text-blue        {/* Overlay gradiente sutil */}
+-400 transition-colors duration-300
             ${featured ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"}
           `}
         >
           {project.title}
         </h3>
 
-        {/* Descrição - limitada a 2 linhas */}
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed line-clamp-2 mb-4">
           {project.description}
         </p>
 
-        {/* Tags de Tecnologia */}
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tech.slice(0, featured ? 6 : 4).map((tag) => (
             <span
@@ -120,7 +117,6 @@ function ProjectCard({
           )}
         </div>
 
-        {/* Highlight Badge */}
         {project.highlight && (
           <div className="mb-3">
             <span
@@ -131,7 +127,6 @@ function ProjectCard({
           </div>
         )}
 
-        {/* Links - Demo e GitHub */}
         <div className="flex items-center gap-4 pt-2 border-t border-gray-800/50">
           {project.demo && (
             <a
@@ -166,7 +161,6 @@ function ProjectCard({
         </div>
       </div>
 
-      {/* Efeito de brilho sutil no hover */}
       <div
         className="
           absolute inset-0 opacity-0 group-hover:opacity-100
@@ -187,14 +181,12 @@ interface ProjectsGridProps {
 export default function ProjectsGrid({ projects }: ProjectsGridProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
-      {/* Linha Superior - Card Grande (col-span-12) */}
       {projects[0] && (
         <div className="md:col-span-12">
           <ProjectCard project={projects[0]} featured className="h-full" />
         </div>
       )}
 
-      {/* Linha do Meio - Dois Cards Iguais (col-span-6 cada) */}
       {projects[1] && (
         <div className="md:col-span-6">
           <ProjectCard project={projects[1]} className="h-full" />
@@ -206,7 +198,6 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
         </div>
       )}
 
-      {/* Linha Inferior - Cards Assimétricos (col-span-5 e col-span-7) */}
       {projects[3] && (
         <div className="md:col-span-5">
           <ProjectCard project={projects[3]} className="h-full" />

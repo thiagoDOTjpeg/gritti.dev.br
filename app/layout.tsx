@@ -5,14 +5,13 @@ import Script from "next/script";
 
 const siteUrl = "https://gritti.dev.br";
 const siteName = "Thiago Gritti";
-// Descrição atualizada com base no novo currículo
 const siteDescription =
-  "Desenvolvedor Full-Stack com expertise em otimização de performance e arquitetura de software. Especializado em TypeScript/Node.js/Next.js, com experiência em Clean Architecture, CI/CD e serverless.";
+  "Desenvolvedor Full-Stack com expertise em otimização de performance. Especializado em TypeScript/Node.js/Next.js, com experiência em Clean Architecture, CI/CD e serverless.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Thiago Gritti | Desenvolvedor Fullstack", // Título que você queria
+    default: "Thiago Gritti | Desenvolvedor Fullstack",
     template: "%s | Thiago Gritti",
   },
   description: siteDescription,
@@ -39,8 +38,9 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName,
     title: "Thiago Gritti | Desenvolvedor Fullstack",
-    description: siteDescription, // Descrição atualizada
+    description: siteDescription,
     images: [
+      "/og-image.png",
       {
         url: "/icon1.png",
         width: 1200,
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Thiago Gritti | Desenvolvedor Fullstack",
-    description: siteDescription, // Descrição atualizada
+    description: siteDescription,
     images: ["/icon1.png"],
-    creator: "@seu_usuario", // opcional
+    creator: "@seu_usuario",
   },
   robots: {
     index: true,
@@ -82,7 +82,6 @@ export default function RootLayout({
       <body>
         {children}
 
-        {/* JSON-LD: Person (removido o campo "worksFor") */}
         <Script
           id="ld-person"
           type="application/ld+json"
@@ -101,7 +100,6 @@ export default function RootLayout({
           })}
         </Script>
 
-        {/* JSON-LD: WebSite (descrição "about" atualizada) */}
         <Script
           id="ld-website"
           type="application/ld+json"
@@ -113,7 +111,7 @@ export default function RootLayout({
             name: siteName,
             url: siteUrl,
             inLanguage: "pt-BR",
-            about: siteDescription, // Descrição atualizada
+            about: siteDescription,
             publisher: {
               "@type": "Person",
               name: "Thiago Gritti",
