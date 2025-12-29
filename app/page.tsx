@@ -253,7 +253,7 @@ export default function Home() {
               {/* Backend & Arquitetura */}
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-blue-400" />
+                  <span className="w-2 h-2 bg-blue-400" />
                   Backend & Arquitetura
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -270,7 +270,7 @@ export default function Home() {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 text-sm bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-lg hover:bg-blue-500/20 transition-colors"
+                      className="px-3 py-1.5 text-sm bg-blue-500/10 text-blue-300 border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
                     >
                       {skill}
                     </span>
@@ -281,7 +281,7 @@ export default function Home() {
               {/* Frontend Moderno */}
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-green-400" />
+                  <span className="w-2 h-2 bg-green-400" />
                   Frontend Moderno
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -296,7 +296,7 @@ export default function Home() {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 text-sm bg-green-500/10 text-green-300 border border-green-500/20 rounded-lg hover:bg-green-500/20 transition-colors"
+                      className="px-3 py-1.5 text-sm bg-green-500/10 text-green-300 border border-green-500/20  hover:bg-green-500/20 transition-colors"
                     >
                       {skill}
                     </span>
@@ -307,7 +307,7 @@ export default function Home() {
               {/* DevOps & Cloud */}
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-purple-400" />
+                  <span className="w-2 h-2 bg-purple-400" />
                   DevOps & Cloud
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -321,7 +321,7 @@ export default function Home() {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 text-sm bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-lg hover:bg-purple-500/20 transition-colors"
+                      className="px-3 py-1.5 text-sm bg-purple-500/10 text-purple-300 border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
                     >
                       {skill}
                     </span>
@@ -332,7 +332,7 @@ export default function Home() {
               {/* Qualidade & Testes */}
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-amber-400" />
+                  <span className="w-2 h-2 bg-amber-400" />
                   Qualidade & Testes
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -340,7 +340,7 @@ export default function Home() {
                     (skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1.5 text-sm bg-amber-500/10 text-amber-300 border border-amber-500/20 rounded-lg hover:bg-amber-500/20 transition-colors"
+                        className="px-3 py-1.5 text-sm bg-amber-500/10 text-amber-300 border border-amber-500/20 hover:bg-amber-500/20 transition-colors"
                       >
                         {skill}
                       </span>

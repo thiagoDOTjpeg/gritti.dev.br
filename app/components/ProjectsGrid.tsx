@@ -29,7 +29,7 @@ function ProjectCard({
   return (
     <article
       className={`
-        group relative overflow-hidden rounded-2xl 
+        group relative overflow-hidden  
         bg-linear-to-br from-slate-900/80 to-slate-800/50
         border border-gray-800/50 
         backdrop-blur-sm
@@ -102,7 +102,7 @@ function ProjectCard({
               className="
                 px-2.5 py-1 text-xs font-medium
                 bg-slate-800/80 text-gray-300 
-                border border-gray-700/50 rounded-full
+                border border-gray-700/50 
                 hover:border-blue-500/30 hover:text-blue-300
                 transition-colors duration-200
               "
@@ -120,7 +120,7 @@ function ProjectCard({
         {project.highlight && (
           <div className="mb-3">
             <span
-              className={`inline-block px-3 py-1 text-xs font-bold rounded-full bg-linear-to-r ${project.color} text-white`}
+              className={`inline-block px-3 py-1 text-xs font-bold  bg-linear-to-r ${project.color} text-white`}
             >
               {project.highlight}
             </span>
