@@ -87,6 +87,7 @@ html {
 
 body {
   font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
 h1,
@@ -106,5 +107,42 @@ h6 {
 @media (max-width: 768px) {
   .parallax-layer {
     transform: none !important;
+  }
+}
+
+/* Optimized animation performance */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Smooth 3D transforms */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* GPU acceleration for animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cloud-bob,
+  .cloud-track {
+    animation: none;
   }
 }
