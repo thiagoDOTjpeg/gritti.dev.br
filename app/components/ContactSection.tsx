@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import {
+  FiCheck,
   FiMail,
   FiMessageSquare,
   FiPhone,
@@ -14,7 +16,7 @@ import BlurText from "./ui/BlurText";
 
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -44,38 +46,39 @@ export default function ContactSection() {
       // - Uma API própria
 
       console.log("Form data:", formData);
-      setSubmitted(true);
+
+      // Show success message and clear form, but keep form visible
+      setShowSuccess(true);
       setFormData({ name: "", email: "", phone: "", message: "" });
 
-      setTimeout(() => setSubmitted(false), 3000);
+      // Hide success message after 5 seconds
+      setTimeout(() => setShowSuccess(false), 5000);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  if (submitted) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="text-center py-12"
-      >
-        <div className="w-16 h-16 mx-auto mb-4 bg-green-500/20 rounded-full flex items-center justify-center">
-          <FiSend className="w-8 h-8 text-green-400" />
-        </div>
-        <h3 className="text-xl font-bold text-white mb-2">Mensagem Enviada!</h3>
-        <p className="text-gray-400">Responderei em breve.</p>
-      </motion.div>
-    );
-  }
+  // Common input styles with improved contrast (WCAG 4.5:1)
+  const inputBaseStyles = clsx(
+    "w-full px-4 py-3 min-h-[48px]",
+    "bg-slate-800/60 border border-slate-600/50 rounded-lg",
+    "text-white placeholder-slate-400",
+    "focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30",
+    "transition-colors duration-200 outline-none"
+  );
+
+  // Label styles with improved contrast
+  const labelBaseStyles =
+    "flex items-center gap-2 text-sm font-medium text-slate-200 mb-2";
 
   return (
     <section
       id="contact"
       className="relative bg-linear-to-b from-slate-900 to-slate-800 text-white py-24 px-4 overflow-hidden"
+      aria-labelledby="contact-heading"
     >
       {/* Background grid */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-30" aria-hidden="true">
         <div
           className="absolute inset-0"
           style={{
@@ -95,7 +98,7 @@ export default function ContactSection() {
             as="h2"
           />
           <motion.p
-            className="text-gray-400 max-w-2xl mx-auto text-lg"
+            className="text-slate-300 max-w-2xl mx-auto text-lg"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -106,111 +109,164 @@ export default function ContactSection() {
           </motion.p>
         </AnimatedSection>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid md:grid-cols-2 gap-4">
-            {/* Nome */}
+        {/* Success Message - Displayed above form, form stays visible */}
+        <AnimatePresence>
+          {showSuccess && (
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              initial={{ opacity: 0, y: -20, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: "auto" }}
+              exit={{ opacity: 0, y: -20, height: 0 }}
+              className="mb-6 overflow-hidden"
+              role="alert"
+              aria-live="polite"
             >
-              <label className="block text-sm text-gray-400 mb-2">
-                <FiUser className="inline mr-2" />
+              <div className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+                <div className="flex-shrink-0 w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
+                  <FiCheck
+                    className="w-5 h-5 text-green-400"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div>
+                  <p className="text-green-400 font-semibold">
+                    Mensagem Enviada com Sucesso!
+                  </p>
+                  <p className="text-slate-300 text-sm">
+                    Responderei em breve. Obrigado pelo contacto!
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+          <div className="grid md:grid-cols-2 gap-5">
+            {/* Nome */}
+            <div>
+              <label htmlFor="contact-name" className={labelBaseStyles}>
+                <FiUser className="w-4 h-4 text-blue-400" aria-hidden="true" />
                 Nome
+                <span className="text-red-400" aria-hidden="true">
+                  *
+                </span>
               </label>
               <input
                 type="text"
+                id="contact-name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-slate-800/50 border border-gray-700/50 text-white placeholder-gray-500 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all outline-none rounded-lg"
-                placeholder="Seu nome"
+                aria-required="true"
+                autoComplete="name"
+                className={inputBaseStyles}
+                placeholder="Seu nome completo"
               />
-            </motion.div>
+            </div>
 
             {/* Email */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.15 }}
-            >
-              <label className="block text-sm text-gray-400 mb-2">
-                <FiMail className="inline mr-2" />
+            <div>
+              <label htmlFor="contact-email" className={labelBaseStyles}>
+                <FiMail className="w-4 h-4 text-blue-400" aria-hidden="true" />
                 Email
+                <span className="text-red-400" aria-hidden="true">
+                  *
+                </span>
               </label>
               <input
                 type="email"
+                id="contact-email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-slate-800/50 border border-gray-700/50 text-white placeholder-gray-500 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all outline-none rounded-lg"
+                aria-required="true"
+                autoComplete="email"
+                className={inputBaseStyles}
                 placeholder="seu@email.com"
               />
-            </motion.div>
+            </div>
           </div>
 
-          {/* Telefone */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <label className="block text-sm text-gray-400 mb-2">
-              <FiPhone className="inline mr-2" />
-              Telefone (Opcional)
+          {/* Telefone - Optional field with distinct styling */}
+          <div>
+            <label
+              htmlFor="contact-phone"
+              className={clsx(labelBaseStyles, "text-slate-400")}
+            >
+              <FiPhone className="w-4 h-4 text-slate-500" aria-hidden="true" />
+              Telefone
+              <span className="text-xs font-normal text-slate-500 ml-1">
+                (Opcional)
+              </span>
             </label>
             <input
               type="tel"
+              id="contact-phone"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-slate-800/50 border border-gray-700/50 text-white placeholder-gray-500 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all outline-none rounded-lg"
+              autoComplete="tel"
+              aria-required="false"
+              className={clsx(
+                inputBaseStyles,
+                "bg-slate-800/40 border-slate-700/50",
+                "focus:bg-slate-800/60"
+              )}
               placeholder="(11) 99999-9999"
             />
-          </motion.div>
+          </div>
 
           {/* Mensagem */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.25 }}
-          >
-            <label className="block text-sm text-gray-400 mb-2">
-              <FiMessageSquare className="inline mr-2" />
+          <div>
+            <label htmlFor="contact-message" className={labelBaseStyles}>
+              <FiMessageSquare
+                className="w-4 h-4 text-blue-400"
+                aria-hidden="true"
+              />
               Mensagem
+              <span className="text-red-400" aria-hidden="true">
+                *
+              </span>
             </label>
             <textarea
+              id="contact-message"
               name="message"
               value={formData.message}
               onChange={handleChange}
               required
+              aria-required="true"
               rows={5}
-              className="w-full px-4 py-3 bg-slate-800/50 border border-gray-700/50 text-white placeholder-gray-500 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all outline-none resize-none rounded-lg"
+              className={clsx(inputBaseStyles, "resize-none min-h-[140px]")}
               placeholder="Descreva seu projeto, proposta ou mensagem..."
             />
-          </motion.div>
+          </div>
 
-          {/* Submit Button */}
+          {/* Submit Button - Larger touch target (48px min) */}
           <motion.button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 bg-linear-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg hover:from-blue-500 hover:to-purple-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
+            className={clsx(
+              "w-full py-4 min-h-[52px] rounded-lg font-bold",
+              "bg-gradient-to-r from-blue-600 to-purple-600",
+              "text-white shadow-lg",
+              "hover:from-blue-500 hover:to-purple-500",
+              "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900",
+              "disabled:opacity-50 disabled:cursor-not-allowed",
+              "flex items-center justify-center gap-2",
+              "transition-all duration-200"
+            )}
+            whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
+            whileTap={{ scale: isSubmitting ? 1 : 0.99 }}
           >
             {isSubmitting ? (
               <>
-                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                <svg
+                  className="animate-spin h-5 w-5"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
                   <circle
                     className="opacity-25"
                     cx="12"
@@ -226,15 +282,23 @@ export default function ContactSection() {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
                   />
                 </svg>
-                Enviando...
+                <span>Enviando...</span>
               </>
             ) : (
               <>
-                <FiSend className="w-5 h-5" />
-                Enviar Mensagem
+                <FiSend className="w-5 h-5" aria-hidden="true" />
+                <span>Enviar Mensagem</span>
               </>
             )}
           </motion.button>
+
+          {/* Required fields note */}
+          <p className="text-center text-sm text-slate-500">
+            <span className="text-red-400" aria-hidden="true">
+              *
+            </span>{" "}
+            Campos obrigatórios
+          </p>
         </form>
       </div>
     </section>

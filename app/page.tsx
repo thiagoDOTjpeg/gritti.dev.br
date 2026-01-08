@@ -30,76 +30,132 @@ export default function Home() {
         "Ecossistema de sincronização musical de alta performance. Monorepo desenhado para lidar com concorrência massiva, migrando playlists entre serviços de streaming em background.",
       tech: [
         "Next.js 15",
-        "Node.js",
-        "TypeScript",
+        "Clean Architecture",
         "BullMQ",
         "Redis",
-        "PostgreSQL",
+        "Strategy Pattern",
         "Docker",
-        "Clean Architecture",
       ],
       features: [
-        "Arquitetura Hexagonal com DDD e separação estrita de camadas",
-        "Processamento assíncrono resiliente com filas (BullMQ + Redis)",
-        "Autenticação OAuth2 agnóstica ao fornecedor com encriptação AES",
-        "Interface moderna e responsiva com Shadcn UI e TailwindCSS",
+        "Arquitetura Hexagonal com isolamento total de domínio",
+        "Sistema de filas resiliente para Jobs de sincronização",
+        "Autenticação OAuth2 abstrata e extensível",
       ],
       github: "https://github.com/thiagoDOTjpeg/harmonia.io",
       demo: "https://harmonia.gritti.dev.br/",
-      highlight: "Produto Principal",
+      highlight: "Clean Architecture",
       color: "from-indigo-500 to-blue-600",
       image: "/screenshots/harmonia.png",
+      metrics: [
+        { label: "Uptime", value: "99.9%" },
+        { label: "Job Latency", value: "< 50ms" },
+        { label: "Test Coverage", value: "85%+" },
+      ],
+      challenges: [
+        {
+          title: "Desacoplamento com Clean Architecture",
+          description:
+            "Implementação rigorosa de Portas e Adaptadores (Hexagonal). O Core Domain (UseCases, Entities) é completamente isolado de frameworks externos, facilitando testes unitários e trocas de infraestrutura.",
+        },
+        {
+          title: "Estratégia de OAuth Polimórfica",
+          description:
+            "Uso do padrão Strategy (IOAuthCallbackStrategy) para normalizar respostas de APIs distintas (Spotify, Google) numa interface única, permitindo adicionar novos providers sem alterar o fluxo principal.",
+        },
+        {
+          title: "Processamento Assíncrono Resiliente",
+          description:
+            "Arquitetura orientada a mensagens com BullMQ e Redis. A sincronização ocorre em background workers dedicados (PlaylistSyncWorker), garantindo que a API permaneça responsiva sob carga.",
+        },
+      ],
     },
     {
       title: "Distributed TaskFlow",
       description:
-        "Sistema Kanban em tempo real baseado numa arquitetura de microsserviços. Implementa padrões avançados como API Gateway, comunicação híbrida (Síncrona/Assíncrona) e WebSockets.",
+        "Sistema Kanban distribuído baseado em microsserviços. Implementa padrões de Gateway e comunicação em tempo real para colaboração de equipas.",
       tech: [
-        "NestJS (Microservices)",
-        "RabbitMQ",
-        "Socket.io",
-        "React + Vite",
+        "NestJS Microservices",
+        "API Gateway",
+        "WebSockets",
         "PostgreSQL",
-        "Docker Compose",
-        "Turborepo",
+        "React Query",
       ],
       features: [
-        "Arquitetura distribuída com 4 serviços isolados (Gateway, Auth, Tasks, Notifications)",
-        "Sincronização de estado em tempo real via WebSockets para equipas",
-        "Padrão API Gateway centralizando autenticação e roteamento",
-        "Ambiente de desenvolvimento orquestrado via Docker e Monorepo",
+        "API Gateway pattern para roteamento centralizado",
+        "Microserviço de Notificações via WebSocket",
+        "Separação de responsabilidades (Auth vs Tasks vs Notifications)",
       ],
       github: "https://github.com/thiagoDOTjpeg/kanban-microservice",
       demo: null,
-      highlight: "Arquitetura Avançada",
+      highlight: "Microservices",
       color: "from-purple-600 to-indigo-600",
       image: "/screenshots/taskflow.png",
+      metrics: [
+        { label: "Services", value: "4" },
+        { label: "Sync", value: "Real-time" },
+        { label: "DB Isolation", value: "Strict" },
+      ],
+      challenges: [
+        {
+          title: "Padrão API Gateway",
+          description:
+            "Implementação de um Gateway central (apps/api-gateway) que atua como proxy reverso, gerindo a autenticação JWT e encaminhando tráfego para os serviços de Tasks e Notifications de forma transparente.",
+        },
+        {
+          title: "Arquitetura Event-Driven",
+          description:
+            "O serviço de notificações utiliza Gateways de WebSocket (NotificationsGateway) para fazer broadcast de eventos de atualização de tarefas em tempo real para todos os clientes conectados.",
+        },
+        {
+          title: "Database per Service",
+          description:
+            "Cada microserviço (Auth, Tasks, Notifications) possui o seu próprio esquema de base de dados e migrações independentes, garantindo isolamento total de dados e falhas.",
+        },
+      ],
     },
     {
       title: "Fleet & Logistics Core",
       description:
-        "Plataforma de rastreio logístico focada em interoperabilidade. Uma solução híbrida que explora a segurança do Java Spring Boot e a velocidade de I/O do Node.js.",
+        "Infraestrutura robusta para sistemas logísticos, focada em orquestração de ambientes e escalabilidade horizontal.",
       tech: [
-        "Java 21",
-        "Spring Boot 3",
-        "NestJS",
-        "RabbitMQ",
-        "PostGIS",
-        "Redis",
-        "Docker",
-        "Microservices",
+        "Docker Compose",
+        "Nginx",
+        "Shell Scripting",
+        "Makefile",
+        "PostgreSQL",
       ],
       features: [
-        "Comunicação assíncrona entre serviços Java e Node.js via RabbitMQ",
-        "Serviço de Autenticação Centralizado (SSO) com Spring Security",
-        "Cálculos geoespaciais complexos com PostGIS",
-        "Documentação arquitetural baseada no modelo C4",
+        "Ambiente de desenvolvimento reprodutível",
+        "Proxy reverso com Nginx",
+        "Automação de tarefas com Makefile",
       ],
-      github: "https://github.com/thiagoDOTjpeg/fleet-microservices",
+      github: "https://github.com/thiagoDOTjpeg/fleet-infra",
       demo: null,
-      highlight: "Backend Poliglota",
+      highlight: "DevOps / Infra",
       color: "from-orange-500 to-amber-600",
       image: "/screenshots/fleet.png",
+      metrics: [
+        { label: "Deploy", value: "1-Cmd" },
+        { label: "Container", value: "Alpine" },
+        { label: "Proxy", value: "Nginx" },
+      ],
+      challenges: [
+        {
+          title: "Infraestrutura como Código (IaC)",
+          description:
+            "Definição declarativa de todo o ambiente via Docker Compose, orquestrando serviços de base de dados e proxy reverso com redes isoladas para segurança.",
+        },
+        {
+          title: "Reverse Proxy & Load Balancing",
+          description:
+            "Configuração manual de Nginx (nginx.conf) para atuar como ponto de entrada único, gerindo o encaminhamento de tráfego para os serviços backend adequados.",
+        },
+        {
+          title: "Automação de Developer Experience",
+          description:
+            "Uso de Makefiles e Scripts Shell (init-db.sh) para padronizar o setup do ambiente local, garantindo que qualquer developer possa iniciar a stack completa com um único comando (make up).",
+        },
+      ],
     },
   ];
 
@@ -119,7 +175,7 @@ export default function Home() {
             <div className="text-center text-white px-4">
               <BlurText
                 text="THIAGO GRITTI"
-                className="text-5xl sm:text-6xl md:text-7xl font-bold mb-3 pixel-font text-yellow-400 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)] [text-shadow:3px_3px_0_#000,-1px_-1px_0_#000,1px_-1px_0_#000,-1px_1px_0_#000,4px_4px_0_rgba(0,0,0,0.5)]"
+                className="text-5xl sm:text-6xl md:text-7xl font-bold mb-3 pixel-font text-yellow-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                 delay={0.2}
                 animateBy="letters"
                 direction="bottom"
