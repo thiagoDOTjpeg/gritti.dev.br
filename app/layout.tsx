@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 const siteUrl = "https://gritti.dev.br";
@@ -53,8 +54,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Thiago Gritti | Desenvolvedor Fullstack",
     description: siteDescription,
-    images: ["/icon1.png"],
-    creator: "@seu_usuario",
+    images: ["/og-image.png"],
+    creator: "@thiagogritti",
+    site: "@thiagogritti",
   },
   robots: {
     index: true,
@@ -82,6 +84,28 @@ export default function RootLayout({
       <body>
         {children}
 
+        <Analytics />
+
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                  page_title: document.title,
+                  page_location: window.location.href,
+                });
+              `}
+            </Script>
+          </>
+        )}
+
         <Script
           id="ld-person"
           type="application/ld+json"
@@ -90,12 +114,26 @@ export default function RootLayout({
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
+            "@id": `${siteUrl}/#person`,
             name: "Thiago Gritti",
             url: siteUrl,
-            jobTitle: "Desenvolvedor Fullstack (Backend)",
+            image: `${siteUrl}/og-image.png`,
+            jobTitle: "Desenvolvedor Fullstack",
+            description: siteDescription,
+            email: "mailto:contato@gritti.dev.br",
             sameAs: [
               "https://github.com/thiagoDOTjpeg",
               "https://www.linkedin.com/in/thiago-gritti",
+            ],
+            knowsAbout: [
+              "TypeScript",
+              "Node.js",
+              "Next.js",
+              "React",
+              "Java",
+              "Spring Boot",
+              "Clean Architecture",
+              "Docker",
             ],
           })}
         </Script>
@@ -108,14 +146,33 @@ export default function RootLayout({
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
+            "@id": `${siteUrl}/#website`,
             name: siteName,
             url: siteUrl,
             inLanguage: "pt-BR",
-            about: siteDescription,
+            description: siteDescription,
             publisher: {
-              "@type": "Person",
-              name: "Thiago Gritti",
+              "@id": `${siteUrl}/#person`,
             },
+          })}
+        </Script>
+
+        <Script
+          id="ld-profile"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "@id": `${siteUrl}/#profilepage`,
+            url: siteUrl,
+            name: "Portfólio de Thiago Gritti",
+            mainEntity: {
+              "@id": `${siteUrl}/#person`,
+            },
+            dateCreated: "2024-01-01",
+            dateModified: new Date().toISOString().split("T")[0],
           })}
         </Script>
       </body>
