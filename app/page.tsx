@@ -7,7 +7,7 @@ import ExperienceSection from "./components/ExperienceSection";
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
 import ParallaxSection from "./components/ParallaxSection";
-import ProjectsGrid from "./components/ProjectsGrid";
+import ProjectsGrid, { Project } from "./components/ProjectsGrid";
 import ScrollIndicator from "./components/ScrollIndicator";
 import AnimatedSection from "./components/ui/AnimatedSection";
 import BlurText from "./components/ui/BlurText";
@@ -23,7 +23,7 @@ export default function Home() {
     { image: "/1.png", speed: 0.2, zIndex: 1 },
   ];
 
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Harmonia.io",
       description:
@@ -154,6 +154,39 @@ export default function Home() {
           title: "Automação de Developer Experience",
           description:
             "Uso de Makefiles e Scripts Shell (init-db.sh) para padronizar o setup do ambiente local, garantindo que qualquer developer possa iniciar a stack completa com um único comando (make up).",
+        },
+      ],
+    },
+    {
+      title: "Industrial Telemetry Cloud",
+      description:
+        "Pipeline de dados IoT escalável na AWS para ingestão e processamento de telemetria industrial em tempo real utilizando Infraestrutura como Código.",
+      tech: ["Terraform", "AWS SQS", "Lambda", "RDS", "Python", "Docker"],
+      features: [
+        "Infraestrutura Multi-AZ provisionada integralmente via Terraform",
+        "Arquitetura desacoplada produtora-consumidora via SQS",
+        "Segurança granular com IAM e VPC Security Groups",
+      ],
+      github: "https://github.com/thiagodotjpeg/industrial-telemetry-cloud",
+      image: "/screenshots/industrial-aws.png",
+      demo: null,
+      highlight: "DevOps & Cloud",
+      color: "from-orange-500 to-red-600",
+      metrics: [
+        { label: "Tempo de Setup", value: "< 5 min" },
+        { label: "Capacidade Ingestão", value: "10k msg/s" },
+        { label: "Disponibilidade Infra", value: "99.99%" },
+      ],
+      challenges: [
+        {
+          title: "Escalabilidade Elástica",
+          description:
+            "Configuração de gatilhos de Lambda sobre SQS para processamento em paralelo, garantindo zero perda de dados durante picos de telemetria.",
+        },
+        {
+          title: "Automação com Terraform",
+          description:
+            "Criação de módulos reutilizáveis para VPC e RDS, eliminando a configuração manual e garantindo paridade entre ambientes de dev e prod.",
         },
       ],
     },
